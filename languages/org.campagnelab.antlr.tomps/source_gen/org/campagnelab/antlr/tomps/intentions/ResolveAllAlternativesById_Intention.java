@@ -4,6 +4,8 @@ package org.campagnelab.antlr.tomps.intentions;
 
 import jetbrains.mps.intentions.IntentionDescriptorBase;
 import jetbrains.mps.intentions.IntentionFactory;
+import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
 import java.util.Collection;
 import jetbrains.mps.intentions.IntentionExecutable;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -12,21 +14,21 @@ import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.Collections;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
 import jetbrains.mps.intentions.IntentionExecutableBase;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.baseLanguage.logging.runtime.model.LoggingRuntime;
+import org.apache.log4j.Level;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.campagnelab.ANTLR.behavior.Alternative__BehaviorDescriptor;
-import org.apache.log4j.Level;
 import jetbrains.mps.intentions.IntentionDescriptor;
 
 public final class ResolveAllAlternativesById_Intention extends IntentionDescriptorBase implements IntentionFactory {
+  private static final Logger LOG = LogManager.getLogger(ResolveAllAlternativesById_Intention.class);
   private Collection<IntentionExecutable> myCachedExecutable;
   public ResolveAllAlternativesById_Intention() {
     super(MetaAdapterFactory.getConcept(0x932d719ce93144d5L, 0x990ce115f79b5942L, 0x6a1bb02ea6061b82L, "org.campagnelab.antlr.tomps.structure.ConvertToMPS"), IntentionType.NORMAL, false, new SNodePointer("r:3172cd41-bcad-4d57-92e5-868449e54828(org.campagnelab.antlr.tomps.intentions)", "558881339895242806"));
@@ -49,7 +51,6 @@ public final class ResolveAllAlternativesById_Intention extends IntentionDescrip
     }
     return myCachedExecutable;
   }
-  protected static Logger LOG = LogManager.getLogger(ResolveAllAlternativesById_Intention.class);
   /*package*/ final class IntentionImplementation extends IntentionExecutableBase {
     public IntentionImplementation() {
     }
@@ -62,7 +63,7 @@ public final class ResolveAllAlternativesById_Intention extends IntentionDescrip
       ListSequence.fromList(SNodeOperations.getNodeDescendants(node, MetaAdapterFactory.getConcept(0x932d719ce93144d5L, 0x990ce115f79b5942L, 0x6a1bb02ea606232bL, "org.campagnelab.antlr.tomps.structure.AlternativeMapper"), false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
         public void visit(final SNode altMapper) {
           if (LOG.isInfoEnabled()) {
-            LOG.info("Trying to resolve altMapper with id=" + SPropertyOperations.getString(altMapper, MetaAdapterFactory.getProperty(0x932d719ce93144d5L, 0x990ce115f79b5942L, 0x6a1bb02ea606232bL, 0x7c18b9e17fff06eL, "id")));
+            LoggingRuntime.legacyLog(Level.INFO, "Trying to resolve altMapper with id=" + SPropertyOperations.getString(altMapper, MetaAdapterFactory.getProperty(0x932d719ce93144d5L, 0x990ce115f79b5942L, 0x6a1bb02ea606232bL, 0x7c18b9e17fff06eL, "id")), ResolveAllAlternativesById_Intention.class, null);
           }
           SNode alt = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(node, MetaAdapterFactory.getReferenceLink(0x932d719ce93144d5L, 0x990ce115f79b5942L, 0x6a1bb02ea6061b82L, 0x6a1bb02ea6061be9L, "grammar")), MetaAdapterFactory.getConcept(0xd6782141eafa4cf7L, 0xa85d1229abdb1152L, 0x631eebe3113b458fL, "org.campagnelab.ANTLR.structure.Alternative"), false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
@@ -73,7 +74,7 @@ public final class ResolveAllAlternativesById_Intention extends IntentionDescrip
             SLinkOperations.setTarget(altMapper, MetaAdapterFactory.getReferenceLink(0x932d719ce93144d5L, 0x990ce115f79b5942L, 0x6a1bb02ea606232bL, 0x6a1bb02ea6062391L, "alternative"), alt);
           } else {
             if (LOG.isEnabledFor(Level.WARN)) {
-              LOG.warn("not found: " + SPropertyOperations.getString(altMapper, MetaAdapterFactory.getProperty(0x932d719ce93144d5L, 0x990ce115f79b5942L, 0x6a1bb02ea606232bL, 0x7c18b9e17fff06eL, "id")));
+              LoggingRuntime.legacyLog(Level.WARN, "not found: " + SPropertyOperations.getString(altMapper, MetaAdapterFactory.getProperty(0x932d719ce93144d5L, 0x990ce115f79b5942L, 0x6a1bb02ea606232bL, 0x7c18b9e17fff06eL, "id")), ResolveAllAlternativesById_Intention.class, null);
             }
           }
           // TODO propagate resolve to source and destinations.. 

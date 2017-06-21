@@ -37,51 +37,51 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   public ConceptPresentation getDescriptor(SAbstractConcept c) {
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
-      case 0:
+      case LanguageConceptSwitch.AlternativeMapper:
         return props_AlternativeMapper;
-      case 1:
+      case LanguageConceptSwitch.ChildDestination:
         return props_ChildDestination;
-      case 2:
+      case LanguageConceptSwitch.ConceptMapper:
         return props_ConceptMapper;
-      case 3:
+      case LanguageConceptSwitch.ConvertToMPS:
         return props_ConvertToMPS;
-      case 4:
+      case LanguageConceptSwitch.ConverterName:
         return props_ConverterName;
-      case 5:
+      case LanguageConceptSwitch.Destination:
         return props_Destination;
-      case 6:
+      case LanguageConceptSwitch.ExampleConcept:
         return props_ExampleConcept;
-      case 7:
+      case LanguageConceptSwitch.IToConverter:
         return props_IToConverter;
-      case 8:
+      case LanguageConceptSwitch.LabeledElementSource:
         return props_LabeledElementSource;
-      case 9:
+      case LanguageConceptSwitch.LexerRuleSource:
         return props_LexerRuleSource;
-      case 10:
+      case LanguageConceptSwitch.Mapper:
         return props_Mapper;
-      case 11:
+      case LanguageConceptSwitch.NewVisitor:
         return props_NewVisitor;
-      case 12:
+      case LanguageConceptSwitch.Operator:
         return props_Operator;
-      case 13:
+      case LanguageConceptSwitch.ParserRuleSource:
         return props_ParserRuleSource;
-      case 14:
+      case LanguageConceptSwitch.PropertyDestination:
         return props_PropertyDestination;
-      case 15:
+      case LanguageConceptSwitch.Source:
         return props_Source;
-      case 16:
+      case LanguageConceptSwitch.TextGenHelper:
         return props_TextGenHelper;
-      case 17:
+      case LanguageConceptSwitch.ToBooleanDestination:
         return props_ToBooleanDestination;
-      case 18:
+      case LanguageConceptSwitch.ToFloatDestination:
         return props_ToFloatDestination;
-      case 19:
+      case LanguageConceptSwitch.ToIntDestination:
         return props_ToIntDestination;
-      case 20:
+      case LanguageConceptSwitch.ToOperator:
         return props_ToOperator;
-      case 21:
+      case LanguageConceptSwitch.TrimCharacters:
         return props_TrimCharacters;
     }
-    throw new IllegalStateException("Unknown concept " + c);
+    return null;
   }
 }

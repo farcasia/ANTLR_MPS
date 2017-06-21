@@ -41,78 +41,78 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private final ConceptPresentation props_ToTextOutput = new ConceptPresentationBuilder().create();
   private final ConceptPresentation props_Token = new ConceptPresentationBuilder().create();
   private final ConceptPresentation props_TokenRef = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_TokenSpec = new ConceptPresentationBuilder().create();
+  private final ConceptPresentation props_TokenSpec = new ConceptPresentationBuilder().shortDesc("Specification for TOKENS").create();
 
   @Override
   @Nullable
   public ConceptPresentation getDescriptor(SAbstractConcept c) {
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
-      case 0:
+      case LanguageConceptSwitch.Alternative:
         return props_Alternative;
-      case 1:
+      case LanguageConceptSwitch.Alternatives:
         return props_Alternatives;
-      case 2:
+      case LanguageConceptSwitch.BlockSet:
         return props_BlockSet;
-      case 3:
+      case LanguageConceptSwitch.Dot:
         return props_Dot;
-      case 4:
+      case LanguageConceptSwitch.Grammar:
         return props_Grammar;
-      case 5:
+      case LanguageConceptSwitch.HasOptionalParams:
         return props_HasOptionalParams;
-      case 6:
+      case LanguageConceptSwitch.LabeledElement:
         return props_LabeledElement;
-      case 7:
+      case LanguageConceptSwitch.LexerAlt:
         return props_LexerAlt;
-      case 8:
+      case LanguageConceptSwitch.LexerAltList:
         return props_LexerAltList;
-      case 9:
+      case LanguageConceptSwitch.LexerBlock:
         return props_LexerBlock;
-      case 10:
+      case LanguageConceptSwitch.LexerElement:
         return props_LexerElement;
-      case 11:
+      case LanguageConceptSwitch.LexerRule:
         return props_LexerRule;
-      case 12:
+      case LanguageConceptSwitch.LexerRuleBlock:
         return props_LexerRuleBlock;
-      case 13:
+      case LanguageConceptSwitch.LexerRuleRef:
         return props_LexerRuleRef;
-      case 14:
+      case LanguageConceptSwitch.LexerRuleRefByName:
         return props_LexerRuleRefByName;
-      case 15:
+      case LanguageConceptSwitch.LexerToken:
         return props_LexerToken;
-      case 16:
+      case LanguageConceptSwitch.NotSet:
         return props_NotSet;
-      case 17:
+      case LanguageConceptSwitch.Parentheses:
         return props_Parentheses;
-      case 18:
+      case LanguageConceptSwitch.ParserRule:
         return props_ParserRule;
-      case 19:
+      case LanguageConceptSwitch.ParserRuleBlock:
         return props_ParserRuleBlock;
-      case 20:
+      case LanguageConceptSwitch.ParserRuleRef:
         return props_ParserRuleRef;
-      case 21:
+      case LanguageConceptSwitch.REGEXP:
         return props_REGEXP;
-      case 22:
+      case LanguageConceptSwitch.Range:
         return props_Range;
-      case 23:
+      case LanguageConceptSwitch.Rule:
         return props_Rule;
-      case 24:
+      case LanguageConceptSwitch.RuleRefByName:
         return props_RuleRefByName;
-      case 25:
+      case LanguageConceptSwitch.Sequence:
         return props_Sequence;
-      case 26:
+      case LanguageConceptSwitch.SetElement:
         return props_SetElement;
-      case 27:
+      case LanguageConceptSwitch.StringLiteral:
         return props_StringLiteral;
-      case 28:
+      case LanguageConceptSwitch.ToTextOutput:
         return props_ToTextOutput;
-      case 29:
+      case LanguageConceptSwitch.Token:
         return props_Token;
-      case 30:
+      case LanguageConceptSwitch.TokenRef:
         return props_TokenRef;
-      case 31:
+      case LanguageConceptSwitch.TokenSpec:
         return props_TokenSpec;
     }
-    throw new IllegalStateException("Unknown concept " + c);
+    return null;
   }
 }

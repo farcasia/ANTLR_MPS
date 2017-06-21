@@ -11,7 +11,9 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Collection;
 import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
+import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
+import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 
 public final class IntentionsDescriptor extends IntentionAspectBase {
   private static final IntentionFactory[] EMPTY_ARRAY = new IntentionFactory[0];
@@ -27,88 +29,83 @@ public final class IntentionsDescriptor extends IntentionAspectBase {
     }
 
     IntentionFactory[] intentions = EMPTY_ARRAY;
-    {
-      SAbstractConcept cncpt = concept;
-      Integer preIndex = indices_hphjzv_d0f.get(cncpt);
-      int switchIndex = (preIndex == null ? -1 : preIndex);
-      switch (switchIndex) {
-        case 0:
-          if (true) {
-            // Concept: AlternativeMapper 
-            intentions = new IntentionFactory[3];
-            intentions[0] = new CreateConceptAndLabelsForAlt_Intention();
-            intentions[1] = new CreateEditor_Intention();
-            intentions[2] = new CreateTextGen_Intention();
-          }
-          break;
-        case 1:
-          if (true) {
-            // Concept: ChildDestination 
-            intentions = new IntentionFactory[1];
-            intentions[0] = new ChildAsOperator_Intention();
-          }
-          break;
-        case 2:
-          if (true) {
-            // Concept: ConceptMapper 
-            intentions = new IntentionFactory[5];
-            intentions[0] = new CreateConcept_Intention();
-            intentions[1] = new AddAllAlternatives_Intention();
-            intentions[2] = new CreateConceptAndLabels_Intention();
-            intentions[3] = new CreateEditors_Intention();
-            intentions[4] = new CreateTextGens_Intention();
-          }
-          break;
-        case 3:
-          if (true) {
-            // Concept: ConvertToMPS 
-            intentions = new IntentionFactory[5];
-            intentions[0] = new ResolveAllAlternativesById_Intention();
-            intentions[1] = new SortOperatorsByPriority_Intention();
-            intentions[2] = new CreateOperatorConcepts_Intention();
-            intentions[3] = new SwitchToOperatorNames_Intention();
-            intentions[4] = new CreateOperatorTextGen_Intention();
-          }
-          break;
-        case 4:
-          if (true) {
-            // Concept: Grammar 
-            intentions = new IntentionFactory[1];
-            intentions[0] = new RenameLabelsFromConceptsIn_Intention();
-          }
-          break;
-        case 5:
-          if (true) {
-            // Concept: LexerRuleSource 
-            intentions = new IntentionFactory[2];
-            intentions[0] = new AddTrimCharacters_Intention();
-            intentions[1] = new ForceGetText_Intention();
-          }
-          break;
-        case 6:
-          if (true) {
-            // Concept: ParserRuleBlock 
-            intentions = new IntentionFactory[1];
-            intentions[0] = new DeclareOperator_Intention();
-          }
-          break;
-        case 7:
-          if (true) {
-            // Concept: PropertyDestination 
-            intentions = new IntentionFactory[1];
-            intentions[0] = new PropertyAsType_Intention();
-          }
-          break;
-        case 8:
-          if (true) {
-            // Concept: StringLiteral 
-            intentions = new IntentionFactory[1];
-            intentions[0] = new AddLabelSubconcept_Intention();
-          }
-          break;
-        default:
-          // default 
-      }
+    SAbstractConcept cncpt = concept;
+    switch (index_hphjzv_d0f.index(cncpt)) {
+      case 0:
+        if (true) {
+          // Concept: AlternativeMapper 
+          intentions = new IntentionFactory[3];
+          intentions[0] = new CreateConceptAndLabelsForAlt_Intention();
+          intentions[1] = new CreateEditor_Intention();
+          intentions[2] = new CreateTextGen_Intention();
+        }
+        break;
+      case 1:
+        if (true) {
+          // Concept: ChildDestination 
+          intentions = new IntentionFactory[1];
+          intentions[0] = new ChildAsOperator_Intention();
+        }
+        break;
+      case 2:
+        if (true) {
+          // Concept: ConceptMapper 
+          intentions = new IntentionFactory[5];
+          intentions[0] = new CreateConcept_Intention();
+          intentions[1] = new AddAllAlternatives_Intention();
+          intentions[2] = new CreateConceptAndLabels_Intention();
+          intentions[3] = new CreateEditors_Intention();
+          intentions[4] = new CreateTextGens_Intention();
+        }
+        break;
+      case 3:
+        if (true) {
+          // Concept: ConvertToMPS 
+          intentions = new IntentionFactory[5];
+          intentions[0] = new ResolveAllAlternativesById_Intention();
+          intentions[1] = new SortOperatorsByPriority_Intention();
+          intentions[2] = new CreateOperatorConcepts_Intention();
+          intentions[3] = new SwitchToOperatorNames_Intention();
+          intentions[4] = new CreateOperatorTextGen_Intention();
+        }
+        break;
+      case 4:
+        if (true) {
+          // Concept: Grammar 
+          intentions = new IntentionFactory[1];
+          intentions[0] = new RenameLabelsFromConceptsIn_Intention();
+        }
+        break;
+      case 5:
+        if (true) {
+          // Concept: LexerRuleSource 
+          intentions = new IntentionFactory[2];
+          intentions[0] = new AddTrimCharacters_Intention();
+          intentions[1] = new ForceGetText_Intention();
+        }
+        break;
+      case 6:
+        if (true) {
+          // Concept: ParserRuleBlock 
+          intentions = new IntentionFactory[1];
+          intentions[0] = new DeclareOperator_Intention();
+        }
+        break;
+      case 7:
+        if (true) {
+          // Concept: PropertyDestination 
+          intentions = new IntentionFactory[1];
+          intentions[0] = new PropertyAsType_Intention();
+        }
+        break;
+      case 8:
+        if (true) {
+          // Concept: StringLiteral 
+          intentions = new IntentionFactory[1];
+          intentions[0] = new AddLabelSubconcept_Intention();
+        }
+        break;
+      default:
     }
     myCached.put(concept, intentions);
     return Arrays.asList(intentions);
@@ -140,13 +137,5 @@ public final class IntentionsDescriptor extends IntentionAspectBase {
     rv[19] = new ForceGetText_Intention();
     return Arrays.asList(rv);
   }
-  private static Map<SAbstractConcept, Integer> buildConceptIndices(SAbstractConcept... concepts) {
-    HashMap<SAbstractConcept, Integer> res = new HashMap<SAbstractConcept, Integer>();
-    int counter = 0;
-    for (SAbstractConcept c : concepts) {
-      res.put(c, counter++);
-    }
-    return res;
-  }
-  private static final Map<SAbstractConcept, Integer> indices_hphjzv_d0f = buildConceptIndices(MetaAdapterFactory.getConcept(0x932d719ce93144d5L, 0x990ce115f79b5942L, 0x6a1bb02ea606232bL, "org.campagnelab.antlr.tomps.structure.AlternativeMapper"), MetaAdapterFactory.getConcept(0x932d719ce93144d5L, 0x990ce115f79b5942L, 0x4aaf5f3861bb9099L, "org.campagnelab.antlr.tomps.structure.ChildDestination"), MetaAdapterFactory.getConcept(0x932d719ce93144d5L, 0x990ce115f79b5942L, 0x69d936b00a0eba02L, "org.campagnelab.antlr.tomps.structure.ConceptMapper"), MetaAdapterFactory.getConcept(0x932d719ce93144d5L, 0x990ce115f79b5942L, 0x6a1bb02ea6061b82L, "org.campagnelab.antlr.tomps.structure.ConvertToMPS"), MetaAdapterFactory.getConcept(0xd6782141eafa4cf7L, 0xa85d1229abdb1152L, 0x631eebe3113222a9L, "org.campagnelab.ANTLR.structure.Grammar"), MetaAdapterFactory.getConcept(0x932d719ce93144d5L, 0x990ce115f79b5942L, 0x6912564f422833dbL, "org.campagnelab.antlr.tomps.structure.LexerRuleSource"), MetaAdapterFactory.getConcept(0xd6782141eafa4cf7L, 0xa85d1229abdb1152L, 0x631eebe31132d843L, "org.campagnelab.ANTLR.structure.ParserRuleBlock"), MetaAdapterFactory.getConcept(0x932d719ce93144d5L, 0x990ce115f79b5942L, 0x27b12e38d7577b90L, "org.campagnelab.antlr.tomps.structure.PropertyDestination"), MetaAdapterFactory.getConcept(0xd6782141eafa4cf7L, 0xa85d1229abdb1152L, 0x631eebe3113e657fL, "org.campagnelab.ANTLR.structure.StringLiteral"));
+  private static final ConceptSwitchIndex index_hphjzv_d0f = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x932d719ce93144d5L, 0x990ce115f79b5942L, 0x6a1bb02ea606232bL), MetaIdFactory.conceptId(0x932d719ce93144d5L, 0x990ce115f79b5942L, 0x4aaf5f3861bb9099L), MetaIdFactory.conceptId(0x932d719ce93144d5L, 0x990ce115f79b5942L, 0x69d936b00a0eba02L), MetaIdFactory.conceptId(0x932d719ce93144d5L, 0x990ce115f79b5942L, 0x6a1bb02ea6061b82L), MetaIdFactory.conceptId(0xd6782141eafa4cf7L, 0xa85d1229abdb1152L, 0x631eebe3113222a9L), MetaIdFactory.conceptId(0x932d719ce93144d5L, 0x990ce115f79b5942L, 0x6912564f422833dbL), MetaIdFactory.conceptId(0xd6782141eafa4cf7L, 0xa85d1229abdb1152L, 0x631eebe31132d843L), MetaIdFactory.conceptId(0x932d719ce93144d5L, 0x990ce115f79b5942L, 0x27b12e38d7577b90L), MetaIdFactory.conceptId(0xd6782141eafa4cf7L, 0xa85d1229abdb1152L, 0x631eebe3113e657fL)).seal();
 }
