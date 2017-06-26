@@ -4,10 +4,10 @@
   <property name="build.dir" location="build" />
   <property name="build.tmp" location="${build.dir}/tmp/ANTLR" />
   <property name="build.layout" location="${build.dir}/artifacts/ANTLR" />
-  <property name="mps_home" location="" />
+  <property name="mps_home" location="${basedir}/../../../../../Applications/MPS 2017.1.app/Contents" />
   <property name="plugins_home" location="${mps_home}/plugins" />
   <property name="ANTLR_HOME" location="${basedir}" />
-  <property name="ANTLR_version" value="1.1.3" />
+  <property name="ANTLR_version" value="1.1.4" />
   <property name="artifacts.mps" location="${mps_home}" />
   <property name="artifacts.mpsCore" location="${mps_home}/plugins" />
   <property file="${artifacts.mps}/build.properties" prefix="import.mps" />
@@ -41,7 +41,7 @@
         <version>${ANTLR_version}</version>
         <vendor url="http://books.campagnelab.org">Campagne Laboratory</vendor>
         <depends>jetbrains.mps.core</depends>
-        <idea-version since-build="162.1616" until-build="163.1" />
+        <idea-version since-build="171.1" until-build="171.1342" />
         
         <extensions defaultExtensionNs="com.intellij">
           <mps.LanguageLibrary dir="/languages" />
